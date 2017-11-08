@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     # session[:items_ids].each { |item| @order.items << Item.find(item) }
 
     if @post.save
-      redirect_to user_posts_path(current_user)
+      redirect_to current_user
     else
       render :new
     end
@@ -49,6 +49,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, photos: [])
   end
 end
