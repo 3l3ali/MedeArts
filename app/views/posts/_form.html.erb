@@ -1,5 +1,7 @@
 <%= simple_form_for [current_user, @post] do |f| %>
   <h4>write your form:</h4>
   <%= f.input :content%>
+  <h4>pick your photos:</h4>
+  <%= f.input :photos, as: :attachinary %>
   <%= f.submit %>
 <% end %>
