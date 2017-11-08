@@ -15,9 +15,9 @@ require "sprockets/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
 module MedeArts
   class Application < Rails::Application
+    config.i18n.default_locale = :ar
     config.generators do |generate|
       generate.assets false
       generate.helper false
