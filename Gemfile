@@ -23,6 +23,7 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'rails-i18n', '5.0.3'
+gem 'devise-i18n', '~> 1.2'
 
 group :development, :test do
   gem 'pry-byebug'
