@@ -1,15 +1,22 @@
-<h2><%= t(".sign_in") %></h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, t(".sign_in") %>
-  </div>
+<% if !params[:locale].present? || params[:locale] == "ar" %>
+  <div class="text-right">
+<% else %>
+  <div class="text-left">
 <% end %>
+  <h2><%= t(".sign_in") %></h2>
 
-<%= render "devise/shared/links" %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email, required: false, autofocus: true %>
+      <%= f.input :password, required: false %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, t(".sign_in") %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+
+</div>
