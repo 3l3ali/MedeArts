@@ -1,25 +1,32 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :Fname, required: true, autofocus: true %>
-    <%= f.input :Lname, required: true %>
-    <%= f.input :email, required: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-    <%= f.input :Age, required: true %>
-    <%= f.input :City, collection: User.Cities.keys, required: true %>
-    <%= f.input :Accommodation, collection: User.Accommodations.keys, required: true %>
-    <%= f.input :Q1, required: true %>
-    <%= f.input :Q2, required: true %>
-    <%= f.input :Q3, required: true %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
+<% if !params[:locale].present? || params[:locale] == "ar" %>
+  <div class="text-right">
+<% else %>
+  <div class="text-left">
 <% end %>
 
-<%= render "devise/shared/links" %>
+  <h2><%= t(".sign_up") %></h2>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs" >
+      <%= f.input :Fname, required: true, autofocus: true %>
+      <%= f.input :Lname, required: true %>
+      <%= f.input :email, required: true %>
+      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+      <%= f.input :password_confirmation, required: true %>
+      <%= f.input :Age, required: true %>
+      <%= f.input :City, collection: User.Cities.keys, required: true %>
+      <%= f.input :Accommodation, collection: User.Accommodations.keys, required: true %>
+      <%= f.input :Q1, required: true %>
+      <%= f.input :Q2, required: true %>
+      <%= f.input :Q3, required: true %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, t(".sign_up") %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
+
+</div>
