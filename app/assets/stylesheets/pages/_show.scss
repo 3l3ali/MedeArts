@@ -19,8 +19,8 @@
     width: 40%;
     height: auto;
     border-radius: 50%;
-    border: 1px solid rgba(0,0,0,0.8);
-    box-shadow: 2px 2px 2px rgba(29, 233, 182,0.6);
+    border: 1px solid white;
+    box-shadow: 2px 2px 1px rgba(0,0,0,0.4);
     margin-top: 40px;
   }
   .bio-name {
@@ -91,11 +91,38 @@
 
 
 // MOBILE
+.mobile-wrapper{
+  .questions-wrapper {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
 .mobile-bio-wrapper {
   background-color: white;
   width: 100%;
   height: 100%;
-  margin-top: 50px;
+  margin-top: 20px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 2px rgba(29, 233, 182,0.6);
 
+  img {
+    margin-top: 5%;
+    width: 40%;
+    height: auto;
+    border-radius: 50%;
+    border: 1px solid white;
+    box-shadow: 2px 2px 1px rgba(0,0,0,0.4);
 
+  }
+  h4 {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  table {
+    width: 60%;
+    tr > td {
+      width:50%;
+    }
+    margin: 10% auto;
+  }
 }
