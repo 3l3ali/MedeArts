@@ -4,7 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :posts
+  has_attachment :photo
+
+  has_many :posts, dependent: :destroy
 
   validates :Fname, presence: true
   validates :Lname, presence: true
