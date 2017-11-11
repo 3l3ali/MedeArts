@@ -1,0 +1,143 @@
+<% content_for(:after_js) do %>
+  <script type="text/javascript">
+  $( document ).ready(function() {
+      /* Basic Gallery */
+      $( '.swipebox' ).swipebox();
+      });
+  </script>
+<% end %>
+
+<!-- DESKTOP -->
+<div class="show-wrapper hidden-xs hidden-sm">
+  <div class="bio-wrapper">
+    <div class="bio-image text-center">
+      <%= image_tag "logo.png" %>
+    </div>
+    <div class="bio-name text-center">
+      <h4><%= @user.Fname %> <%= @user.Lname %> </h4>
+    </div>
+    <table class="bio-table">
+      <tr>
+        <td><i class="fa fa-home" aria-hidden="true"></td>
+        <td><h5><div><%= @user.City %></div></h5></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-user" aria-hidden="true"></i></td>
+        <td><h5><div><%= @user.Age %></div></h5></td>
+      </tr>
+      <tr>
+        <td><i class="fa fa-briefcase" aria-hidden="true"></i></i></td>
+        <td><h5><div><%= @user.Accommodation %></div></h5></td>
+      </tr>
+      <!-- here goes the youtube and sound cloud when we add it -->
+    </table>
+  </div>
+  <div class="moving-wrapper">
+    <div class="questions-wrapper">
+      <h5>question 1
+        <h4><small><%= @user.Q1 %></small></h4>
+      </h5>
+      <hr>
+      <h5>question 2
+        <h4><small><%= @user.Q2 %></small></h4>
+      </h5>
+      <hr>
+      <h5>question 3
+        <h4><small><%= @user.Q3 %></small></h4>
+      </h5>
+    </div>
+
+
+
+    <% @posts.each do |post| %>
+      <div class="post-wrapper">
+        <h4><small><%= post.content %></small></h4>
+
+
+        <% post.photos.each_with_index do |photo,index| %>
+          <% if index == 0 %>
+            <a rel="gallery-1-<%= post.id %>" href="<%= cl_image_path(photo.path) %>" class="swipebox">
+                    <%= cl_image_tag(photo.path)%></a>
+
+            <% else %>
+            <a rel="gallery-1-<%= post.id %>" href="<%= cl_image_path(photo.path) %>" class="swipebox hidden">
+                  <%= cl_image_tag(photo.path)%></a>
+          <% end %>
+        <% end unless post.photos.nil?%>
+        <% unless post.photos.nil?  %>
+          <h5 class="photos-count text-center"><b><small>(<%= post.photos.count %>&nbsp;<%= "Photo".pluralize(post.photos.count) %>)</small></b></h5>
+        <% end %>
+        <h5 class="post-time"><small><%= post.created_at.strftime("%Y / %m / %e , %l:%M %p ") %></small></h5>
+      </div>
+    <% end unless @posts.nil?%>
+  </div>
+
+</div>
+
+
+<!-- MOBILE -->
+<div class="container ">
+  <div class="mobile-wrapper hidden-md hidden-lg">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="mobile-bio-wrapper text-center">
+          <%= image_tag "logo.png" %>
+          <h4><%= @user.Fname %> <%= @user.Lname %> </h4>
+          <table>
+            <tr>
+              <td><i class="fa fa-home" aria-hidden="true"></td>
+              <td><h5><div><%= @user.City %></div></h5></td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-user" aria-hidden="true"></i></td>
+              <td><h5><div><%= @user.Age %></div></h5></td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-briefcase" aria-hidden="true"></i></i></td>
+              <td><h5><div><%= @user.Accommodation %></div></h5></td>
+            </tr>
+            <!-- here goes the youtube and sound cloud when we add it -->
+          </table>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="questions-wrapper">
+          <h5>question 1
+            <h4><small><%= @user.Q1 %></small></h4>
+          </h5>
+          <hr>
+          <h5>question 2
+            <h4><small><%= @user.Q2 %></small></h4>
+          </h5>
+          <hr>
+          <h5>question 3
+            <h4><small><%= @user.Q3 %></small></h4>
+          </h5>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <% @posts.each do |post| %>
+          <div class="post-wrapper">
+            <h4><small><%= post.content %></small></h4>
+
+
+            <% post.photos.each_with_index do |photo,index| %>
+              <% if index == 0 %>
+                <a rel="gallery-2-<%=post.id %>" href="<%= cl_image_path(photo.path) %>" class="swipebox">
+                        <%= cl_image_tag(photo.path)%></a>
+
+                <% else %>
+                <a rel="gallery-2-<%= post.id %>" href="<%= cl_image_path(photo.path) %>" class="swipebox hidden">
+                      <%= cl_image_tag(photo.path)%></a>
+              <% end %>
+            <% end unless post.photos.nil?%>
+            <% unless post.photos.nil?  %>
+              <h5 class="photos-count text-center"><b><small>(<%= post.photos.count %>&nbsp;<%= "Photo".pluralize(post.photos.count) %>)</small></b></h5>
+            <% end %>
+            <h5 class="post-time"><small><%= post.created_at.strftime("%Y / %m / %e , %l:%M %p ") %></small></h5>
+          </div>
+        <% end unless @posts.nil?%>
+      </div>
+    </div>
+  </div>
+</div>
